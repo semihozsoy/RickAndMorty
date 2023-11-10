@@ -21,7 +21,16 @@ struct Info: Codable {
 }
 
 // MARK: - RickAndMortyResult
-struct RickAndMortyResult: Codable {
+struct RickAndMortyResult: Codable, Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+         hasher.combine(id)
+     }
+    
+    static func == (lhs: RickAndMortyResult, rhs: RickAndMortyResult) -> Bool {
+       return lhs.id == rhs.id
+    }
+    
     let id: Int?
     let name: String?
     let status: Status?
