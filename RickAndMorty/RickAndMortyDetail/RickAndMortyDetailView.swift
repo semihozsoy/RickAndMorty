@@ -17,19 +17,35 @@ struct RickAndMortyDetailView: View {
                 .scaledToFit()
                 .frame(height: 200)
                 .cornerRadius(12)
-            Text("Full Name: \(result.name ?? "")")
-                .font(.title2)
-                .fontWeight(.semibold)
-                .lineLimit(2)
-            Text("Location: \(result.location?.name ?? "")")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .lineLimit(2)
-            Text("Created: \(result.created?.toDate() ?? "")")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .lineLimit(2)
+                .overlay(RoundedRectangle(cornerRadius: 12.0).stroke(lineWidth: 2))
+                .shadow(radius: 5)
+            ZStack {
+                Text(result.name ?? "")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .lineLimit(2)
+            }
+            ZStack {
+                Text("Location: \(result.location?.name ?? "unknown")")
+                    .font(.headline)
+                    .padding(5)
+                    .foregroundColor(.black)
+                    .lineLimit(2)
+                    .background(Color.white.opacity(0.7))
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+            }
+            ZStack {
+                Text("Created: \(result.created?.toDate() ?? "")")
+                    .font(.headline)
+                    .padding(5)
+                    .foregroundColor(.black)
+                    .lineLimit(2)
+                    .background(Color.white.opacity(0.7))
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                
+            }
         }
+        .background(Image("DetailBackground"))
     }
 }
 
