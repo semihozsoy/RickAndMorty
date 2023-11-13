@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct CharacterCell: View {
     var result: RickAndMortyResult
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         HStack {
@@ -24,13 +25,13 @@ struct CharacterCell: View {
                     .fontWeight(.semibold)
                 Text("Status: \(result.status?.rawValue ?? "")")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(colorScheme == .light ? .gray : .cyan)
                 Text("Gender: \(result.gender?.rawValue ?? "")")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(colorScheme == .light ? .red : .indigo)
                 Text("Species: \(result.species?.rawValue ?? "")")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(colorScheme == .light ? .black : .mint)
             }
         }
     }

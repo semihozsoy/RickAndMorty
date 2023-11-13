@@ -31,5 +31,6 @@ struct RickAndMortyView: View {
 struct RickAndMortyView_Previews: PreviewProvider {
     static var previews: some View {
         RickAndMortyView()
+            .preferredColorScheme(.light)
     }
 }
